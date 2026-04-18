@@ -1,210 +1,137 @@
-
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rawan Audio Records</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #0f172a;
-            color: white;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        h1 {
-            margin-bottom: 30px;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px 50px;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        }
-        .container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            width: 100%;
-            max-width: 1200px;
-        }
-        .record-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 12px;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-        .record-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.1);
-        }
-        h3 { margin-top: 0; color: #cbd5e1; }
-        audio { width: 100%; margin-top: 10px; }
-    </style>
+
+<meta charset="UTF-8">
+<title>وشاح - مصاريف البيت</title>
+
+<style>
+
+body{
+font-family:Tahoma;
+margin:0;
+text-align:center;
+background:#f8fafc;
+}
+
+/* خلفية الصورة */
+body::before{
+content:"";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:url('family.jpg') no-repeat center;
+background-size:cover;
+opacity:0.15;
+z-index:-1;
+}
+
+header{
+padding:25px;
+font-size:28px;
+background:white;
+box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+
+.container{
+width:90%;
+margin:auto;
+padding:20px;
+}
+
+input, select, button{
+padding:12px;
+margin:8px;
+width:85%;
+border-radius:10px;
+border:1px solid #ddd;
+font-size:16px;
+}
+
+button{
+background:#4CAF50;
+color:white;
+border:none;
+}
+
+.card{
+background:white;
+padding:20px;
+margin:15px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,0.08);
+}
+
+h3{
+margin-bottom:10px;
+}
+
+</style>
+
 </head>
+
 <body>
 
-    <h1>Rawan Audio Records</h1>
+<header>
+وشاح - مصاريف البيت
+</header>
 
-    <div class="container">
-        <div class="record-card">
-            <h3>Record 1</h3>
-            <audio controls><source src="records/audio1.mp3" type="audio/mpeg"></audio>
-        </div>
+<div class="container">
 
-        <div class="record-card">
-            <h3>Record 2</h3>
-            <audio controls><source src="records/audio2.mp3" type="audio/mpeg"></audio>
-        </div>
+<div class="card">
+<h3>الدخل الشهري</h3>
+<input type="number" id="income" placeholder="اكتب الدخل">
+</div>
 
-        <div class="record-card">
-            <h3>Record 3</h3>
-            <audio controls><source src="records/audio3.mp3" type="audio/mpeg"></audio>
-        </div>
+<div class="card">
+<h3>إضافة مصروف</h3>
+<input type="text" id="name" placeholder="اسم المصروف">
+<input type="number" id="amount" placeholder="المبلغ">
+<select id="category">
+<option>أكل</option>
+<option>إيجار</option>
+<option>فواتير</option>
+<option>مواصلات</option>
+<option>أخرى</option>
+</select>
+<button onclick="addExpense()">إضافة</button>
+</div>
 
-        <div class="record-card">
-            <h3>Record 4</h3>
-            <audio controls><source src="records/audio4.mp3" type="audio/mpeg"></audio>
-        </div>
+<div class="card">
+<h3>النتائج</h3>
+<p>إجمالي المصاريف: <span id="total">0</span></p>
+<p>المتبقي: <span id="remain">0</span></p>
+</div>
 
-        <div class="record-card">
-            <h3>Record 5</h3>
-            <audio controls><source src="records/audio5.mp3" type="audio/mpeg"></audio>
-        </div>
+</div>
 
-        <div class="record-card">
-            <h3>Record 6</h3>
-            <audio controls><source src="records/audio6.mp3" type="audio/mpeg"></audio>
-        </div>
+<script>
 
-        <div class="record-card">
-            <h3>Record 7</h3>
-            <audio controls><source src="records/audio7.mp3" type="audio/mpeg"></audio>
-        </div>
+let expenses = [];
 
-        <div class="record-card">
-            <h3>Record 8</h3>
-            <audio controls><source src="records/audio8.mp3" type="audio/mpeg"></audio>
-        </div>
+function addExpense(){
 
-        <div class="record-card">
-            <h3>Record 9</h3><!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rawan Audio Records</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #0f172a;
-            color: white;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        h1 {
-            margin-bottom: 30px;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px 50px;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        }
-        .container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            width: 100%;
-            max-width: 1200px;
-        }
-        .record-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 12px;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-        .record-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.1);
-        }
-        h3 { margin-top: 0; color: #cbd5e1; }
-        audio { width: 100%; margin-top: 10px; }
-    </style>
-</head>
-<body>
+let amount = parseFloat(document.getElementById("amount").value);
+let income = parseFloat(document.getElementById("income").value);
 
-    <h1>Rawan Audio Records</h1>
+if(!amount || !income){
+alert("أدخل البيانات");
+return;
+}
 
-    <div class="container">
-        <div class="record-card">
-            <h3>Record 1</h3>
-            <audio controls><source src="records/audio1.mp3" type="audio/mpeg"></audio>
-        </div>
+expenses.push(amount);
 
-        <div class="record-card">
-            <h3>Record 2</h3>
-            <audio controls><source src="records/audio2.mp3" type="audio/mpeg"></audio>
-        </div>
+let total = expenses.reduce((a,b)=>a+b,0);
+let remain = income - total;
 
-        <div class="record-card">
-            <h3>Record 3</h3>
-            <audio controls><source src="records/audio3.mp3" type="audio/mpeg"></audio>
-        </div>
+document.getElementById("total").innerText = total;
+document.getElementById("remain").innerText = remain;
 
-        <div class="record-card">
-            <h3>Record 4</h3>
-            <audio controls><source src="records/audio4.mp3" type="audio/mpeg"></audio>
-        </div>
+}
 
-        <div class="record-card">
-            <h3>Record 5</h3>
-            <audio controls><source src="records/audio5.mp3" type="audio/mpeg"></audio>
-        </div>
-
-        <div class="record-card">
-            <h3>Record 6</h3>
-            <audio controls><source src="records/audio6.mp3" type="audio/mpeg"></audio>
-        </div>
-
-        <div class="record-card">
-            <h3>Record 7</h3>
-            <audio controls><source src="records/audio7.mp3" type="audio/mpeg"></audio>
-        </div>
-
-        <div class="record-card">
-            <h3>Record 8</h3>
-            <audio controls><source src="records/audio8.mp3" type="audio/mpeg"></audio>
-        </div>
-
-        <div class="record-card">
-            <h3>Record 9</h3>
-            <audio controls><source src="records/audio9.mp3" type="audio/mpeg"></audio>
-        </div>
-
-        <div class="record-card">
-            <h3>Record 10</h3>
-            <audio controls><source src="records/audio10.mp3" type="audio/mpeg"></audio>
-        </div>
-        </div>
-
-</body>
-</html>
-            <audio controls><source src="records/audio9.mp3" type="audio/mpeg"></audio>
-        </div>
-
-        <div class="record-card">
-            <h3>Record 10</h3>
-            <audio controls><source src="records/audio10.mp3" type="audio/mpeg"></audio>
-        </div>
-        </div>
+</script>
 
 </body>
 </html>
